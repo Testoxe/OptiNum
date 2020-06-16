@@ -4,7 +4,7 @@ Résolution des problèmes de minimisation sous contraintes d'égalités
 # Syntaxe
 ```julia
 Lagrangien_Augmente(algo,fonc,contrainte,gradfonc,hessfonc,grad_contrainte,
-			hess_contrainte,phi,x0,option)
+			hess_contrainte,x0,option)
 ```
 
 # Entrées
