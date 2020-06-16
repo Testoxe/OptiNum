@@ -1,3 +1,6 @@
+using Markdown
+using Test
+using LinearAlgebra
 using Test_Optinum
 using Sujet_Optinum
 
