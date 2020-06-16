@@ -10,7 +10,6 @@ include("../src/Lagrangien_Augmente.jl")
 include("../src/Pas_De_Cauchy.jl")
 include("../src/Regions_De_Confiance.jl")
 
-
 # Tester l'algorithme de Newton
 printstyled("Lancement des tests sur ",bold=true,color=:white)
 printstyled("l'algorithme de Newton ",bold=true,color=:blue)

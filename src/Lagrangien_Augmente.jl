@@ -18,7 +18,6 @@ Lagrangien_Augmente(algo,fonc,contrainte,gradfonc,hessfonc,grad_contrainte,
   * **hessfonc** 	   : la hessienne de la fonction
   * **grad_contrainte** : le gradient de la contrainte
   * **hess_contrainte** : la hessienne de la contrainte
-  * **phi(x)** : utilisée dans le calcul du gradient du Lagrangien (égale 0 dans le cas des contraintes d'égalités)
   * **x0** 			   : la première composante du point de départ du Lagrangien
   * **options**
     1. **epsilon** 	   : utilisé dans les critères d'arrêt
@@ -48,12 +47,11 @@ options = []
 contrainte(x) =  (x[1]^2) + (x[2]^2) -1.5
 grad_contrainte(x) = [2*x[1] ;2*x[2]]
 hess_contrainte(x) = [2 0;0 2]
-phi(x) = 0
 output = Lagrangien_Augmente(algo,f,contrainte,gradf,hessf,grad_contrainte,hess_contrainte,phi,x0,options)
 ```
 """
 function Lagrangien_Augmente(algo,fonc::Function,contrainte::Function,gradfonc::Function,
-	hessfonc::Function,grad_contrainte::Function,hess_contrainte::Function,phi::Function,x0,options)
+	hessfonc::Function,grad_contrainte::Function,hess_contrainte::Function,x0,options)
 
 	if options == []
 		epsilon = 1e-8
