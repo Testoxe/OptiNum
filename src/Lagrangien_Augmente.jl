@@ -56,11 +56,11 @@ function Lagrangien_Augmente(algo,fonc::Function,contrainte::Function,gradfonc::
 	hessfonc::Function,grad_contrainte::Function,hess_contrainte::Function,phi::Function,x0,options)
 
 	if options == []
-		epsilon = 1e-30
-		tol = 1e-3
+		epsilon = 1e-8
+		tol = 1e-5
 		itermax = 1000
-		lambda0 = 0.3
-		mu0 = 0.5
+		lambda0 = 2
+		mu0 = 10
 		tho = 2
 	else
 		epsilon = options[1]
