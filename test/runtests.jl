@@ -1,11 +1,11 @@
 using Test_Optinum
 using Sujet_Optinum
 
-include("Algorithme_De_Newton.jl")
-include("Gradient_Conjugue_Tronque.jl")
-include("Lagrangien_Augmente.jl")
-include("Pas_De_Cauchy.jl")
-include("Regions_De_Confiance.jl")
+include("../src/Algorithme_De_Newton.jl")
+include("../src/Gradient_Conjugue_Tronque.jl")
+include("../src/Lagrangien_Augmente.jl")
+include("../src/Pas_De_Cauchy.jl")
+include("../src/Regions_De_Confiance.jl")
 
 
 
