@@ -1,4 +1,5 @@
 using Test_Optinum
+using Sujet_Optinum
 
 include("Algorithme_De_Newton.jl")
 include("Gradient_Conjugue_Tronque.jl")
