@@ -74,7 +74,7 @@ function Regions_De_Confiance(algo,f::Function,gradf::Function,hessf::Function,x
 
     n = length(x0)
     xmin = zeros(n)
-    fxmin = 0
+    fxmin = f(xmin)
     flag = 0
     nb_iters = 0
 

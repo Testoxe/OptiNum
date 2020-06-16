@@ -1,0 +1,14 @@
+language: julia
+os:
+  - osx
+  - linux
+  - windows  
+julia:
+  - 1.4 
+  - 1.5
+  - 1.0.5
+before_script:
+  - julia -e 'using Pkg; Pkg.add(PackageSpec(url="https://github.com/mathn7/Test_Optinum.git"))'
+notifications:
+  email: false
+
