@@ -4,11 +4,10 @@ Minimise le problème : ``min_{||s||< \delta_{k}} q_k(s) = s^{t}g + (1/2)s^{t}Hs
 
 # Syntaxe
 ```julia
-sk = Gradient_Conjugue_Tronque(fk,gradfk,hessfk,option)
+sk = Gradient_Conjugue_Tronque(gradfk,hessfk,option)
 ```
 
 # Entrées :
-   * **fk**               : la fonction à minimiser appliqué au point xk
    * **gradfk**           : le gradient de la fonction f appliqué au point xk
    * **hessfk**           : la Hessienne de la fonction f appliqué au point xk
    * **options**
@@ -22,15 +21,14 @@ sk = Gradient_Conjugue_Tronque(fk,gradfk,hessfk,option)
 
 # Exemple d'appel:
 ```julia
-f(x)=100*(x[2]-x[1]^2)^2+(1-x[1])^2
 gradf(x)=[-400*x[1]*(x[2]-x[1]^2)-2*(1-x[1]) ; 200*(x[2]-x[1]^2)]
 hessf(x)=[-400*(x[2]-3*x[1]^2)+2  -400*x[1];-400*x[1]  200]
 xk = [1; 0]
 options = []
-s = Gradient_Conjugue_Tronque(f(xk),gradf(xk),hessf(xk),options)
+s = Gradient_Conjugue_Tronque(gradf(xk),hessf(xk),options)
 ```
 """
-function Gradient_Conjugue_Tronque(fk,gradfk,hessfk,options)
+function Gradient_Conjugue_Tronque(gradfk,hessfk,options)
 
     "# Si option est vide on initialise les 3 paramètres par défaut"
     if options == []
