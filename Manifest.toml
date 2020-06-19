@@ -39,6 +39,14 @@ uuid = "6462fe0b-24de-5631-8697-dd941f90decc"
 deps = ["Distributed", "InteractiveUtils", "Logging", "Random"]
 uuid = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
 
+[[TestOptinum]]
+deps = ["Markdown", "Test"]
+git-tree-sha1 = "dfd5b658951a4957c24bd392ba50555b46a5840e"
+repo-rev = "master"
+repo-url = "https://github.com/mathn7/TestOptinum.git"
+uuid = "a6016688-b6f6-4950-8384-ab0954b6af15"
+version = "0.1.0"
+
 [[Test_Optinum]]
 deps = ["Markdown", "Test"]
 git-tree-sha1 = "19ed2fce4d1d51ef570dec1e50cdf7b03fb478b9"

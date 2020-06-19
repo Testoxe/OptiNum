@@ -6,7 +6,7 @@ os:
 julia:
   - 1.4 
 beofre_script:
-  - julia -e 'using Pkg; Pkg.add(PackageSpec(url="https://github.com/mathn7/Test_Optinum.git"))'
+  - julia -e 'using Pkg; Pkg.add(PackageSpec(url="https://github.com/mathn7/TestOptinum.git"))'
 
 notifications:
   email: false
