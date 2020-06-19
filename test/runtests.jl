@@ -10,7 +10,7 @@ include("../src/Lagrangien_Augmente.jl")
 include("../src/Pas_De_Cauchy.jl")
 include("../src/Regions_De_Confiance.jl")
 
-Test_Optinum.stacktrace()
+Test_Optinum.cacher_stacktrace()
 
 # Tester l'algorithme de Newton
 try
