@@ -46,11 +46,3 @@ repo-rev = "master"
 repo-url = "https://github.com/mathn7/TestOptinum.git"
 uuid = "a6016688-b6f6-4950-8384-ab0954b6af15"
 version = "0.1.0"
-
-[[Test_Optinum]]
-deps = ["Markdown", "Test"]
-git-tree-sha1 = "19ed2fce4d1d51ef570dec1e50cdf7b03fb478b9"
-repo-rev = "master"
-repo-url = "https://github.com/mathn7/Test_Optinum.git"
-uuid = "f01acfed-6be5-49b9-8763-0b41ea537fc3"
-version = "0.1.0"
