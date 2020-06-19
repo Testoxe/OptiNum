@@ -10,6 +10,8 @@ include("../src/Lagrangien_Augmente.jl")
 include("../src/Pas_De_Cauchy.jl")
 include("../src/Regions_De_Confiance.jl")
 
+Test_Optinum.effacer_stacktrace()
+
 # Tester l'algorithme de Newton
 try
 	Test_Optinum.tester_Algo_Newton(false,Algorithme_De_Newton)
