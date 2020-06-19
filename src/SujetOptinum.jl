@@ -3,7 +3,7 @@ module SujetOptinum
 using LinearAlgebra
 using Test
 using Markdown
-using Test_Optinum
+using TestOptinum
 
 
 include("Algorithme_De_Newton.jl")
