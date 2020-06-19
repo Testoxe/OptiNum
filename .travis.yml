@@ -5,8 +5,10 @@ os:
   - windows  
 julia:
   - 1.4 
-before_script:
+script:
   - julia -e 'using Pkg; Pkg.add(PackageSpec(url="https://github.com/mathn7/Test_Optinum.git"))'
+  - julia -e 'using Pkg; Pkg.instantiate(); Pkg.develop(PackageSpec(path=pwd()))'
   - julia -e 'using Test_Optinum; Test_Optinum.effacer_stacktrace()'
+  - julia --color=yes test/runtests.jl
 notifications:
   email: false
