@@ -1,9 +1,9 @@
 using Documenter
-using Sujet_Optinum
+using SujetOptinum
 
 makedocs(
-    modules = [Sujet_Optinum],
-    sitename = "Sujet_Optinum.jl",
+    modules = [SujetOptinum],
+    sitename = "SujetOptinum.jl",
     authors = "Saloua Naama, Mohamed El Waghf et Rachid ELMontassir",
     format = Documenter.HTML(prettyurls = get(ENV, "CI", nothing) == "true"),
     pages = [
@@ -12,7 +12,7 @@ makedocs(
     )
 
 deploydocs(
-    repo   = "github.com/mathn7/Sujet_Optinum.git",
+    repo   = "github.com/mathn7/SujetOptinum.git",
     branch = "gh-pages",  
     devbranch = "master",
 )

@@ -2,7 +2,7 @@ using Markdown
 using Test
 using LinearAlgebra
 using Test_Optinum
-using Sujet_Optinum
+using SujetOptinum
 
 include("../src/Algorithme_De_Newton.jl")
 include("../src/Gradient_Conjugue_Tronque.jl")
