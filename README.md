@@ -1,4 +1,4 @@
-# Sujet_Optinum
+# SujetOptinum
 
 | **Documentation** | **Intégration continue** | **Julia doc** |
 |:-----------------:|:------------------------:|:-------------:|
