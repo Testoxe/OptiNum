@@ -12,7 +12,7 @@ include("../src/Regions_De_Confiance.jl")
 
 TestOptinum.cacher_stacktrace()
 
-# Tester l'algorithme de Newton
+# Tester l'ensemble des algorithmes
 try 
 	res = @testset "Test Optinum" begin		
 		# Tester l'algorithme de Newton
