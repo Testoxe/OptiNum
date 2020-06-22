@@ -41,7 +41,7 @@ uuid = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
 
 [[TestOptinum]]
 deps = ["Markdown", "Test"]
-git-tree-sha1 = "ba3c55226180e46ff696dfb4f9e615f7bbefc5ff"
+git-tree-sha1 = "592766c068c8a484430a65f88fc6680775d4647d"
 repo-rev = "master"
 repo-url = "https://github.com/mathn7/TestOptinum.git"
 uuid = "a6016688-b6f6-4950-8384-ab0954b6af15"
