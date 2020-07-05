@@ -4,20 +4,20 @@ Minimise le problème : ``min_{||s||< \delta_{k}} q_k(s) = s^{t}g + (1/2)s^{t}Hs
 
 # Syntaxe
 ```julia
-sk = Gradient_Conjugue_Tronque(gradfk,hessfk,option)
+sk = Gradient_Conjugue_Tronque(fk,gradfk,hessfk,option)
 ```
 
-# Entrées :
-   * **gradfk**           : le gradient de la fonction f appliqué au point xk
-   * **hessfk**           : la Hessienne de la fonction f appliqué au point xk
-   * **options**
+# Entrées :   
+   * **gradfk**           : (Array{Float,1}) le gradient de la fonction f appliqué au point xk
+   * **hessfk**           : (Array{Float,2}) la Hessienne de la fonction f appliqué au point xk
+   * **options**          : (Array{Float,1})
       - **delta**    : le rayon de la région de confiance
       - **max_iter** : le nombre maximal d'iterations
       - **tol**      : la tolérance pour la condition d'arrêt sur le gradient
 
 
 # Sorties:
-   * **s** : le pas s qui approche la solution du problème : ``min_{||s||< \delta_{k}} q(s)``
+   * **s** : (Array{Float,1}) le pas s qui approche la solution du problème : ``min_{||s||< \delta_{k}} q(s)``
 
 # Exemple d'appel:
 ```julia

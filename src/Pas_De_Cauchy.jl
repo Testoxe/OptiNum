@@ -9,13 +9,13 @@ s1, e1 = Pas_De_Cauchy(gradient,Hessienne,delta)
 ```
 
 # Entrées
- * **gradfk** : le gradient de la fonction f appliqué au point ``x_k``
- * **hessfk** : la Hessienne de la fonction f appliqué au point ``x_k``
- * **delta**  : le rayon de la région de confiance
+ * **gradfk** : (Array{Float,1}) le gradient de la fonction f appliqué au point ``x_k``
+ * **hessfk** : (Array{Float,2}) la Hessienne de la fonction f appliqué au point ``x_k``
+ * **delta**  : (Float) le rayon de la région de confiance
 
 # Sorties
- * **s** : une approximation de la  solution du sous-problème
- * **e** : indice indiquant l'état de sortie:
+ * **s** : (Array{Float,1}) une approximation de la  solution du sous-problème
+ * **e** : (Integer) indice indiquant l'état de sortie:
         si g != 0
             si on ne sature pas la boule
               e <- 1
@@ -37,6 +37,6 @@ function Pas_De_Cauchy(g,H,delta)
     e = 0
     n = length(g)
     s = zeros(n)
+    
     return s, e
-
 end
