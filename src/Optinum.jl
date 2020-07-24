@@ -1,4 +1,4 @@
-module SujetOptinum
+module Optinum
 
 using LinearAlgebra
 using Test
