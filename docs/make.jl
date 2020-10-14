@@ -23,7 +23,7 @@ makedocs(
 	    "Pour Lagrangien augmenté" => "Questions_Lagrangien_Augmente.md"
             ],
             "Annexes" => "Annexes.md",
-            "Exemples d'appels" =>"Exemples.md",
+            #"Exemples d'appels" =>"Exemples.md",
             "Mise en place" => "mise_en_place.md",
             "Julia vs MatLab"=> "julia_vs_matlab.md", 
             "Création de Modules en Julia" => "create_package.md",
