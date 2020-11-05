@@ -6,7 +6,6 @@ language: julia
   - windows  
 julia:
   - 1.4
-  
 beofre_script:
   - julia -e 'using Pkg; Pkg.add(PackageSpec(url="https://github.com/mathn7/TestOptinum.git"))'
 
