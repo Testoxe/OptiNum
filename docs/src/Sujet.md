@@ -15,7 +15,7 @@ Dans cette partie, on s’intéresse à la résolution du problème
 ``\min _{x \in \mathbb{R}^{n}} f(x)``
 
 où la fonction ``f`` est de classe ``C^{2}`` sur ``R^{n}`` . On cherche donc à exploiter l’information fournie
-par ses dérivées première et seconde, que l’on représente en tout point ``x`` par le vecteur
+par ses dérivées première et seconde, que l’on représente en tout point x par le vecteur
 gradient ``\nabla f (x) \in R^{n}`` et la matrice Hessienne ``\nabla^{2} f (x) \in R^{n\times n}``.
 
 [1) Algorithme de Newton local](Algorithme_de_newton.md)
