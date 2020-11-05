@@ -6,7 +6,7 @@ régions de confiance. La résolution du sous-problème des régions de confianc
 réalisée de deux façons, soit à l’aide du point de Cauchy, soit par l’algorithme du Gra-
 dient Conjugué Tronqué.
 La seconde partie du projet exploite la partie précédente pour résoudre des problèmes
-d’optimisation avec contraintes par l’algorithme du Lagrangien augmenté.
+d’optimisation avec contraintes par l’algorithme du Lagrangien augmenté. 
 
 ## Optimisation sans contraintes
 
