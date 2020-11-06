@@ -26,7 +26,7 @@ gradient ``\nabla f (x) \in R^{n}`` et la matrice Hessienne ``\nabla^{2} f (x) \
 
 ## Optimisation avec contraintes
 
-Dans cette partie, nous nous intéressons à la résolution des problèmes sous contraintes.Le problème se présente donc sous la forme suivante :
+Dans cette partie, nous nous intéressons à la résolution des problèmes sous contraintes. Le problème se présente donc sous la forme suivante :
 
 
 ``\min _{x \in \mathbb{R}^{n}} f(x)`` sous la contrainte ``x \in C``
