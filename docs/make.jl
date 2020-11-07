@@ -16,11 +16,6 @@ makedocs(
             "La méthode du Lagrangien augmenté" => "Lagrangien_augmente.md"                
             ],
 	    "Index des fonctions" =>"fct_index.md",
-            "Travail à réaliser" => [
-	    "Pour les régions de confiance avec le pas de Cauchy" => "Questions_Pas_De_Cauchy.md",
-	    "Pour les régions de confiance avec le gradient conjugué tronqué" => "Questions_GCT.md",
-	    "Pour Lagrangien augmenté" => "Questions_Lagrangien_Augmente.md"
-            ],
             "Annexes" => "Annexes.md",
             #"Exemples d'appels" =>"Exemples.md",
             "Mise en place" => "mise_en_place.md",
