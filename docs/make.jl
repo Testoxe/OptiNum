@@ -17,7 +17,6 @@ makedocs(
             ],
 	    "Index des fonctions" =>"fct_index.md",
             "Travail à réaliser" => [
-            "Pour l'algorithme de Newton" => "Questions_Newton.md",
 	    "Pour les régions de confiance avec le pas de Cauchy" => "Questions_Pas_De_Cauchy.md",
 	    "Pour les régions de confiance avec le gradient conjugué tronqué" => "Questions_GCT.md",
 	    "Pour Lagrangien augmenté" => "Questions_Lagrangien_Augmente.md"

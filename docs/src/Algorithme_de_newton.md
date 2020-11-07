@@ -46,3 +46,20 @@ une approximation de la solution du problème ``\min _{x \in \mathbb{R}^{n}} f(x
   b. Mise à jour : ``x_{k+1} = x_{k}+ d_{k} , k = k + 1``
 #### 2.Retourner :  ``x_{k}``.
 
+## Travail à réaliser Pour l'algorithme de Newton 
+
+#### Implémentation 
+ 
+1. Coder l’algorithme de Newton local tel que décrit dans la séction *Algorithme de Newton*
+
+2. Tester l’algorithme sur les fonctions ``f_{1}`` , ``f_{2}`` avec les points initiaux ``x_{011}`` , ``x_{012}`` (pour ``f_{1}`` ) et ``x_{021}`` , ``x_{022}`` , ``x_{023}`` (pour ``f_{2}`` ) donnés en [Annexe A](Annexes.md).
+
+#### Interprétation 
+
+justifier que
+
+1. l’algorithme implémenté converge en une itération pour ``f_{1}``;
+
+2. l’algorithme puisse ne pas converger pour ``f_{2}`` avec certains points initiaux.
+
+

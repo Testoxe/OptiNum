@@ -1,21 +1,21 @@
-# Régions de confiance
+# Régions de confiance partie 1
 
-  L’introduction d’une région de confiance dans la méthode de Newton permet de garantir
+  L’introduction d’une *région de confiance* dans la méthode de Newton permet de garantir
 la convergence globale de celle-ci, i.e. la convergence vers un optimum local quel que soit
 le point de départ. Cela suppose certaines conditions sur la résolution locale des sous-
 problèmes issus de la méthode, qui sont aisément imposables.
 
 ## Principe
-  L’idée de la méthode des régions de confiance est d’approcher f par une fonction
+  L’idée de la méthode des régions de confiance est d’approcher ``f`` par une fonction
 modèle plus simple ``m_{k}`` dans une région ``R_{k}=\left\{x_{k}+s ;\|s\| \leq \Delta_{k}\right\}`` pour un ``\Delta_{k}`` fixé.
 Cette région dite “de confiance” doit être suffisament petite pour que
 
-``\hspace*{2.5cm}`` ``m_{k}\left(x_{k}+s\right) \sim f\left(x_{k}+s\right)``
+``\hspace*{2.5cm}`` ``m_{k}\left(x_{k}+s\right) \sim f\left(x_{k}+s\right).``
 
-   Le principe est que, au lieu de résoudre l’équation : ``f\left(x_{k+1}\right)=\min _{\|x\| \leq \Delta_{k}} f\left(x_{k}+s\right)``
+   Le principe est que, au lieu de résoudre : ``f\left(x_{k+1}\right)=\min _{\|x\| \leq \Delta_{k}} f\left(x_{k}+s\right)``
 on résout :
 
-``\hspace*{2.5cm}`` ``m_{k}\left(x_{k+1}\right)=\min _{\|x\| \leq \Delta_{k}} m_{k}\left(x_{k}+s\right)`` ``\hspace*{2.5cm}``(2.1)
+``\hspace*{2.5cm}`` ``m_{k}\left(x_{k+1}\right)=\min _{\|x\| \leq \Delta_{k}} m_{k}\left(x_{k}+s\right)`` ``\hspace*{2.5cm}.``(2.1)
 
 Si la différence entre ``f(x_{k+1})`` et ``m_{k} (x_{k+1} )`` est trop grande, on diminue le ``∆_{k}`` (et
 donc la région de confiance) et on résout le modèle (2.1) à nouveau. Un avantage de cette
@@ -25,29 +25,29 @@ sur une région proche de ``x_{k}`` .
 
  Exemple de modèle : l’approximation de Taylor à l’ordre 2 (modèle quadratique) :
 
-``\hspace*{1.5cm}``	``m_{k}\left(x_{k}+s\right)=q_{k}(s)=f\left(x_{k}\right)+g_{k}^{\top} s+\frac{1}{2} s^{\top} H_{k} s`` ``\hspace*{1.5cm}``(2.2)
+``\hspace*{1.5cm}``	``m_{k}\left(x_{k}+s\right)=q_{k}(s)=f\left(x_{k}\right)+g_{k}^{\top} s+\frac{1}{2} s^{\top} H_{k} s`` ``\hspace*{1.5cm},``(2.2)
 
-avec ``g_{k}=\nabla f\left(x_{k}\right) \text { et } H_{k}=\nabla^{2} f\left(x_{k}\right)``
+avec ``g_{k}=\nabla f\left(x_{k}\right) \text { et } H_{k}=\nabla^{2} f\left(x_{k}\right).``
 
 ## Algorithme
 
-###### Algorithme 2  
+#### Algorithme 2  
 
 *Méthode des régions de confiance (algo général)*     
 
-###### Données:
+##### Données:
 
-``\Delta_{\max } > 0, \Delta_{0}  \in(0, \Delta_{\max}), 0 < \gamma_{1} < 1 < \gamma_{2} , 0 < \eta_{1} < \eta_{2} < 1``
+``\Delta_{\max } > 0, \Delta_{0}  \in(0, \Delta_{\max}), 0 < \gamma_{1} < 1 < \gamma_{2} , 0 < \eta_{1} < \eta_{2} < 1.``
 
-###### Sorties: 
-une approximation de la solution du problème : ``\min _{x \in \mathbb{R}^{n}} f(x)``
+##### Sorties: 
+une approximation de la solution du problème : ``\min _{x \in \mathbb{R}^{n}} f(x).``
 
 
-###### 1.Tant que le test de convergence est non satisfait:
+##### 1.Tant que le test de convergence est non satisfait :
 
-``\hspace*{1.5cm}`` a.Calculer approximativement ``s_{k}`` solution du sous-problème (2.1);
+``\hspace*{1.5cm}`` a.Calculer approximativement ``s_{k}`` solution du sous-problème (2.1).
 
-``\hspace*{1.5cm}`` b.Evaluer ``f\left(x_{k}+s_{k}\right)`` et ``\rho_{k}=\frac{f\left(x_{k}\right)-f\left(x_{k}+s_{k}\right)}{m_{k}\left(x_{k}\right)-m_{k}\left(x_{k}+s_{k}\right)}``
+``\hspace*{1.5cm}`` b.Evaluer ``f\left(x_{k}+s_{k}\right)`` et ``\rho_{k}=\frac{f\left(x_{k}\right)-f\left(x_{k}+s_{k}\right)}{m_{k}\left(x_{k}\right)-m_{k}\left(x_{k}+s_{k}\right)}.``
 
 ``\hspace*{1.5cm}`` c. Mettre à jour l’itéré courant :
 
@@ -59,7 +59,7 @@ une approximation de la solution du problème : ``\min _{x \in \mathbb{R}^{n}} f
 
 
 
-###### 2.Retourner ``x_{k}``.
+##### 2.Retourner ``x_{k}``.
 
 Cet algorithme  est un cadre générique. On va s’intéresser à deux raffinages possibles de l’étape a.
 
