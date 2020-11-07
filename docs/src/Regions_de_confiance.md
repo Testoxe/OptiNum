@@ -90,7 +90,7 @@ On s’intéresse maintenant à la résolution approchée du problème (2.1) à 
 
 ###### Sorties:
 
-le pas s qui approche la solution du problème : ``\min_{\|s \| \leq \Delta_{k}} q(s)``
+le pas ``s`` qui approche la solution du problème : ``\min_{\|s \| \leq \Delta_{k}} q(s)``
 
 où ``q(s)=g^{\top} s+\frac{1}{2} s^{\top} H_{k} s``
 

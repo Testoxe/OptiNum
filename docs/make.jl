@@ -19,13 +19,13 @@ makedocs(
             "Annexes" => "Annexes.md",
             #"Exemples d'appels" =>"Exemples.md",
             "Mise en place" => "mise_en_place.md",
-            "Julia vs MatLab"=> "julia_vs_matlab.md", 
-            "Création de Modules en Julia" => "create_package.md",
-            "Création d'un dépôt Git pour un module Julia" => "git_doc.md",
-            "Géneration de la doc" => "generation_doc.md",
-            "Intégration continue et déploiement de la Doc avec Travis" =>"Integration_continue.md",
-	    "Précompilation des modules"=>"Precompilation.md",
-            "Génération du rapport" => "generate_pdf.md",
+            #"Julia vs MatLab"=> "julia_vs_matlab.md", 
+            #"Création de Modules en Julia" => "create_package.md",
+            #"Création d'un dépôt Git pour un module Julia" => "git_doc.md",
+            #"Géneration de la doc" => "generation_doc.md",
+            #"Intégration continue et déploiement de la Doc avec Travis" =>"Integration_continue.md",
+	    #"Précompilation des modules"=>"Precompilation.md",
+            #"Génération du rapport" => "generate_pdf.md",
             "Foire aux Questions" =>"FAQ.md"        
 		
             ]
