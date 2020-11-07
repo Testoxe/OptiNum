@@ -6,13 +6,13 @@ Le package [Optinum](https://github.com/mathn7/Optinum) concerne le projet d’O
 
 **Il ne faut en aucun cas modifier la structuration** de ce projet, ni les interfaces des fonctions.
 
-Les fichiers `julia` que vous aurez à modifier se trouvent dans le répertoire `Optinum/src`. Ces fichier sont : 
+Les fichiers `julia` que vous aurez à modifier se trouvent dans le répertoire `Optinum/src`. Ces fichiers sont : 
 1. `TP-Projet-Optinum.ipynb`: c'est un julia notebook dans lequel vous ferez toutes vos expérimentations numériques et répondrez aux questions posées. Ce fichier est à ouvrir avec `jupyter notebook`.
 2. Les fichiers `julia` qui codent les algorithmes demandés (voir le notebook).
 
 Pour réaliser ce projet, vous avez besoin : 
-1. `julia`, version 1.4.1 ou plus récente;
+1. de `julia`, version 1.4.1 ou plus récente;
 2. des packages IJulia (pour avoir accès à `jupyter notebook pour julia)
-3. des package LinearAlgebra, Markdown
+3. des packages LinearAlgebra, Markdown
 
 ###### Auteurs : O.Cots, J. Gergaud, S. Gratton, P. Matalon, C. Royer, D. Ruiz et E. Simon
