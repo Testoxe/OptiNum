@@ -18,7 +18,7 @@ makedocs(
 	    "Index des fonctions" =>"fct_index.md",
             "Annexes" => "Annexes.md",
             #"Exemples d'appels" =>"Exemples.md",
-            "Mise en place" => "mise_en_place.md",
+            "Installation de Julia et tests unitaires" => "mise_en_place.md",
             #"Julia vs MatLab"=> "julia_vs_matlab.md", 
             #"Création de Modules en Julia" => "create_package.md",
             #"Création d'un dépôt Git pour un module Julia" => "git_doc.md",

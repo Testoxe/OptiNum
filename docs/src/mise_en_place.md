@@ -58,7 +58,7 @@ Besoin d'aide ? Consultez notre [F.A.Q.](FAQ.md)
 
 ## Lancement des tests
 
-Dans le dossier `optinum/` faire :
+Dans le dossier `Optinum/` faire :
 
 ```julia
 (@v1.) pkg> activate .
