@@ -25,8 +25,8 @@ xk, nb_iters, f(xk), flag = Regions_De_Confiance(algo,f,gradf,hessf,x0,option)
      * **eta1,eta2**     : ``0 < \eta_{1} < \eta_{2} < 1`` pour les m-à-j de ``R_{k}``
      * **delta0**        : le rayon de départ de la région de confiance
      * **max_iter**      : le nombre maximale d'iterations
-     * **tolCN1**        : la tolérence pour la condition nécessaire d'ordre 1
-     * **tol**           : la tolérence pour les autres critères d'arrêt
+     * **Tol_abs**       : la tolérence absolue
+     * **Tol_rel**       : la tolérence relative
 
 # Sorties:
 
@@ -60,8 +60,8 @@ function Regions_De_Confiance(algo,f::Function,gradf::Function,hessf::Function,x
         eta2 = 0.75
         delta0 = 2
         max_iter = 1000
-        tolCN1 = 1e-15
-    	tol = 1e-15
+        Tol_abs = sqrt(eps())
+        Tol_rel = 1e-15
     else
         deltaMax = options[1]
         gamma1 = options[2]
@@ -70,16 +70,15 @@ function Regions_De_Confiance(algo,f::Function,gradf::Function,hessf::Function,x
         eta2 = options[5]
         delta0 = options[6]
         max_iter = options[7]
-        tolCN1 = options[8]
-        tol = options[9]
+        Tol_abs = options[8]
+        Tol_rel = options[9]
     end
-    # eps = sqrt(epsilon_machine) à utiliser pour compenser les éventuelles erreurs de la machine lors de l'évaluation des critères d'arrêt
-    eps = 1e-8
+
     n = length(x0)
     xmin = zeros(n)
     fxmin = f(xmin)
     flag = 0
     nb_iters = 0
-          
+
     return xmin, fxmin, flag, nb_iters
 end

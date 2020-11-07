@@ -13,8 +13,8 @@ xk,f_min,flag,nb_iters = Algorithme_de_Newton(f,gradf,hessf,x0,option)
    * **x0**      : (Array{Float,1}) première approximation de la solution cherchée
    * **options** : (Array{Float,1})
        * **max_iter**      : le nombre maximal d'iterations
-       * **tolCN1**        : la tolérence pour la condition nécessaire d'ordre 1
-       * **tol**           : la tolérence pour les autres critères d'arrêt
+       * **Tol_abs**       : la tolérence absolue
+       * **Tol_rel**       : la tolérence relative
 
 # Sorties:
    * **xmin**    : (Array{Float,1}) une approximation de la solution du problème  : ``\min_{x \in \mathbb{R}^{n}} f(x)``
@@ -39,17 +39,16 @@ xmin,f_min,flag,nb_iters = Algorithme_De_Newton(f,gradf,hessf,x0,options)
 """
 function Algorithme_De_Newton(f::Function,gradf::Function,hessf::Function,x0,options)
 
-        "# Si options == [] on prends les paramètres par défaut"
-        if options == []
-            max_iter = 100
-            tolCN1 = 1e-15
-            tol = 1e-15
-        else
-            max_iter = options[1]
-            tolCN1 = options[2]
-            tol = options[3]
-        end
-        eps = 1e-8
+    "# Si options == [] on prends les paramètres par défaut"
+    if options == []
+        max_iter = 100
+        Tol_abs = sqrt(eps())
+        Tol_rel = 1e-15
+    else
+        max_iter = options[1]
+        Tol_abs = options[2]
+        Tol_rel = options[3]
+    end
 
         n = length(x0)
         xmin = zeros(n)
