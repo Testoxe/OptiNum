@@ -46,5 +46,10 @@ une approximation de la solution du problème ``\min _{x \in \mathbb{R}^{n}} f(x
   b. Mise à jour : ``x_{k+1} = x_{k}+ d_{k} , k = k + 1``
 #### 2.Retourner :  ``x_{k}``.
 
+## Tests de convergence
 
+1. ``\|\nabla f(\beta^{(k+1)})\|$ petit : $\|\nabla f(\beta^{(k+1)})\| \leq \max(\texttt{Tol\_rel}\|\nabla f(\beta^{(0)})\|,\texttt{Tol\_als})``;
+2. Evolution de ``f(\beta^{(k+1)})`` petit : ``|f(\beta^{(k+1)}) - f(\beta^{(k)})| \leq \max(\texttt{Tol\_rel}|f(\beta^{(k)})|,\texttt{Tol\_als})``
+3. Evolution du pas ``d^{(k)}=\beta^{(k+1)}-\beta^{(k)}`` petit : ``\|\beta^{(k+1)}-\beta^{(k)}\| \leq \max(\texttt{Tol\_rel}\|\beta^{(k)}\|,\texttt{Tol\_als})``
+4. Le nombre d'itération maximal est atteint.
 
