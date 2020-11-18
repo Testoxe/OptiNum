@@ -49,11 +49,27 @@ function Algorithme_De_Newton(f::Function,gradf::Function,hessf::Function,x0,opt
         Tol_abs = options[2]
         Tol_rel = options[3]
     end
-
+    xk = x0
+    flag = 10
+    while flag == 10
+        dk = solve(hessf(xk)*dk == -gradf(xk))
+        xkplus1 = xk + dk 
+        i += 1
+        if ||gradf(xk)|| =< max(Tol_rel,Tol_abs) "Se documenter sur Tol_rel "
+            flag = 0
+        elseif ||xkplus1 - xk|| =< max(Tol_rel,Tol_abs) 
+                flag = 1
+        elseif |f(xkplus1) - f(xk)| =< max(Tol_rel,Tol_abs)
+                flag = 2
+        elseif max_iter < i
+                flag = 3
+        end
+        xk = xkplus1
+        
+    end
         n = length(x0)
-        xmin = zeros(n)
-        f_min = 0
-        flag = 0
-        nb_iters = 0
+        xmin = xk
+        f_min = f(xmin)
+        nb_iters = i
         return xmin,f_min,flag,nb_iters
 end
