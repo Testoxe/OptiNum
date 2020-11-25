@@ -2,7 +2,7 @@
 Approximation de la solution du problème ``\min_{x \in \mathbb{R}^{n}} f(x)`` en utilisant l'algorithme de Newton
 
 # Syntaxe
-```julia
+```julias
 xk,f_min,flag,nb_iters = Algorithme_de_Newton(f,gradf,hessf,x0,option)
 ```
 
@@ -50,18 +50,19 @@ function Algorithme_De_Newton(f::Function,gradf::Function,hessf::Function,x0,opt
         Tol_rel = options[3]
     end
     xk = x0
+    iter = 0
     flag = 10
     while flag == 10
-        dk = solve(hessf(xk)*dk == -gradf(xk))
+        dk = - gradf(xk)/hessf(xk)
         xkplus1 = xk + dk 
-        i += 1
-        if ||gradf(xk)|| =< max(Tol_rel,Tol_abs) "Se documenter sur Tol_rel "
+        iter += 1
+        if norm(gradf(xk)) <= max(Tol_rel*norm(gradf(x0)),Tol_abs) "test de Convergence flag--> 0 "
             flag = 0
-        elseif ||xkplus1 - xk|| =< max(Tol_rel,Tol_abs) 
+        elseif norm(xkplus1 - xk) <= max(Tol_rel*norm(xk),Tol_abs)  "test de stagnation de xk flag--> 1 "
                 flag = 1
-        elseif |f(xkplus1) - f(xk)| =< max(Tol_rel,Tol_abs)
+        elseif abs(f(xkplus1) - f(xk)) <= max(Tol_rel*abs(f(xk)),Tol_abs)  "test de stagnation de f(xk) flag--> 2 "
                 flag = 2
-        elseif max_iter < i
+        elseif max_iter <= iter  "test sur le nombre d'itération maximal  flag--> 3 "
                 flag = 3
         end
         xk = xkplus1
@@ -70,6 +71,6 @@ function Algorithme_De_Newton(f::Function,gradf::Function,hessf::Function,x0,opt
         n = length(x0)
         xmin = xk
         f_min = f(xmin)
-        nb_iters = i
+        nb_iters = iter
         return xmin,f_min,flag,nb_iters
 end
