@@ -1,5 +1,6 @@
 @doc doc"""
-Résolution des problèmes de minimisation sous contraintes d'égalités
+
+#Résolution des problèmes de minimisation sous contraintes d'égalités
 
 # Syntaxe
 ```julia
@@ -68,12 +69,44 @@ function Lagrangien_Augmente(algo,fonc::Function,contrainte::Function,gradfonc::
 		mu0 = options[5]
 		tho = options[6]
 	end
+    
+    λk = lambda0
+    μk = mu0
+    ϵk = ϵ0
+    ηk = η0
+    τ  = tho
+    α=0.1
+    β=0.9 
+    ϵ0=1 
+    tmp = 0.1258925 
+    η0=  0.79433 # tmp/(mu0^α) 
+    xk = x0
+    flag = 10
+    
+    while flag == 10
+            Laplacien(x,λk,μk) = fonc(x) + (λk') * contrainte(x)+ (μk/2) *(norm(contrainte(x))^2)
+            grad_Laplacien(x,λk,μk) = grad_fonc(x) + (λk') * grad_contrainte(x) # A revoir le calcul
+            hess_Laplacien(x,λk,μk) = hess_fonc(x) + (λk') * hess_contrainte(x) # A revoir le calcul
+            
+            # Ajouter de la Documentations 
+            xkplus1,f_min,flg,iter = algo(Laplacien,grad_Laplacien,hess_Laplacien,xk,[options[3];options[1];options[2]]) #A revoir les parametres des algo
 
-    n = length(x0)
-    xmin = zeros(n)
-	fxmin = 0
-	flag = 0
-	iter = 0
-	
-	return xmin,fxmin,flag,iter
+            niters += iter; 
+        
+            if norm(grad_Laplacien(xkplus1,λk,μk)) <= ϵk
+                flag = 0
+            elseif itermax <= niters  "test sur le nombre d'itération maximal  flag--> 1 "
+                    flag = 1
+            elseif norm(contrainte(xkplus1)) <= ηk
+                λk += μk* contrainte(xkplus1)
+                ϵk = ϵk/μk
+                ηk = ηk/(μk^β)
+            else 
+                μk = μk*τ
+                ϵk = ϵ0/μk
+                ηk = η0/(μk^α)
+            end
+            xk = xkplus1
+         end  
+     return xkplus1,f_min,flag,niters
 end
