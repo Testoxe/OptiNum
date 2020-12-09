@@ -37,6 +37,10 @@ options = []
 xmin,f_min,flag,nb_iters = Algorithme_De_Newton(f,gradf,hessf,x0,options)
 ```
 """
+function Calcul_dk(hessf::Function)
+
+end
+
 function Algorithme_De_Newton(f::Function,gradf::Function,hessf::Function,x0,options)
 
     "# Si options == [] on prends les paramètres par défaut"
@@ -53,7 +57,7 @@ function Algorithme_De_Newton(f::Function,gradf::Function,hessf::Function,x0,opt
     iter = 0
     flag = 10
     while flag == 10
-        dk = - gradf(xk)/hessf(xk)
+        dk = x0 #- gradf(xk)/hessf(xk) # a revoir
         xkplus1 = xk + dk 
         iter += 1
         if norm(gradf(xk)) <= max(Tol_rel*norm(gradf(x0)),Tol_abs) "test de Convergence flag--> 0 "

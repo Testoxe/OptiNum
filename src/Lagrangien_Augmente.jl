@@ -4,7 +4,7 @@
 
 # Syntaxe
 ```julia
-Lagrangien_Augmente(algo,fonc,contrainte,gradfonc,hessfonc,grad_contrainte,
+Lagrangien_Augmente(algo,fonc,contrainte,grad_fonc,hess_fonc,grad_contrainte,
 			hess_contrainte,x0,options)
 ```
 
@@ -15,8 +15,8 @@ Lagrangien_Augmente(algo,fonc,contrainte,gradfonc,hessfonc,grad_contrainte,
     - **"gct"**     : pour le gradient conjugué tronqué
   * **fonc** 		   : (Function) la fonction à minimiser
   * **contrainte**	   : (Function) la contrainte [x est dans le domaine des contraintes ssi ``c(x)=0``]
-  * **gradfonc**       : (Function) le gradient de la fonction
-  * **hessfonc** 	   : (Function) la hessienne de la fonction
+  * **grad_fonc**       : (Function) le gradient de la fonction
+  * **hess_fonc** 	   : (Function) la hessienne de la fonction
   * **grad_contrainte** : (Function) le gradient de la contrainte
   * **hess_contrainte** : (Function) la hessienne de la contrainte
   * **x0** 			   : (Array{Float,1}) la première composante du point de départ du Lagrangien
@@ -51,8 +51,8 @@ hess_contrainte(x) = [2 0;0 2]
 output = Lagrangien_Augmente(algo,f,contrainte,gradf,hessf,grad_contrainte,hess_contrainte,x0,options)
 ```
 """
-function Lagrangien_Augmente(algo,fonc::Function,contrainte::Function,gradfonc::Function,
-	hessfonc::Function,grad_contrainte::Function,hess_contrainte::Function,x0,options)
+function Lagrangien_Augmente(algo,fonc::Function,contrainte::Function,grad_fonc::Function,
+	hess_fonc::Function,grad_contrainte::Function,hess_contrainte::Function,x0,options)
 
 	if options == []
 		epsilon = 1e-8
@@ -72,28 +72,29 @@ function Lagrangien_Augmente(algo,fonc::Function,contrainte::Function,gradfonc::
     
     λk = lambda0
     μk = mu0
+    ϵ0=1/mu0
     ϵk = ϵ0
-    ηk = η0
     τ  = tho
     α=0.1
     β=0.9 
-    ϵ0=1 
-    tmp = 0.1258925 
-    η0=  0.79433 # tmp/(mu0^α) 
+    
+    tmp = 0.1258925 # = ^η0
+    η0=  tmp/(mu0^α) 
+    ηk = η0
     xk = x0
     flag = 10
-    
+    niters =0
     while flag == 10
-            Laplacien(x,λk,μk) = fonc(x) + (λk') * contrainte(x)+ (μk/2) *(norm(contrainte(x))^2)
-            grad_Laplacien(x,λk,μk) = grad_fonc(x) + (λk') * grad_contrainte(x) # A revoir le calcul
-            hess_Laplacien(x,λk,μk) = hess_fonc(x) + (λk') * hess_contrainte(x) # A revoir le calcul
+            Lagrangien(x) = fonc(x) + (λk') * contrainte(x)+ (μk/2) *(norm(contrainte(x))^2)
+            grad_Lagrangien(x) = grad_fonc(x) + (λk') * grad_contrainte(x) + (μk) * contrainte(x) * grad_contrainte(x) 
+            hess_Lagrangien(x) = hess_fonc(x) + (λk') * hess_contrainte(x) + (μk) * grad_contrainte(x) * (grad_contrainte(x)') 
             
             # Ajouter de la Documentations 
-            xkplus1,f_min,flg,iter = algo(Laplacien,grad_Laplacien,hess_Laplacien,xk,[options[3];options[1];options[2]]) #A revoir les parametres des algo
+            xkplus1,f_min,flg,iter = algo(Lagrangien,grad_Lagrangien,hess_Lagrangien,xk,[]) #A revoir les parametres des algo
 
             niters += iter; 
         
-            if norm(grad_Laplacien(xkplus1,λk,μk)) <= ϵk
+            if norm(grad_Lagrangien(xkplus1)) <= ϵk
                 flag = 0
             elseif itermax <= niters  "test sur le nombre d'itération maximal  flag--> 1 "
                     flag = 1
@@ -104,7 +105,7 @@ function Lagrangien_Augmente(algo,fonc::Function,contrainte::Function,gradfonc::
             else 
                 μk = μk*τ
                 ϵk = ϵ0/μk
-                ηk = η0/(μk^α)
+                ηk = tmp/(μk^α)
             end
             xk = xkplus1
          end  
