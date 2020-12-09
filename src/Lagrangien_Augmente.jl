@@ -84,6 +84,12 @@ function Lagrangien_Augmente(algo,fonc::Function,contrainte::Function,grad_fonc:
     xk = x0
     flag = 10
     niters =0
+    # definitions des variables
+    xkplus1 = xk
+    f_min = 0
+    flg = 0
+    iter = 0
+    
     while flag == 10
             Lagrangien(x) = fonc(x) + (λk') * contrainte(x)+ (μk/2) *(norm(contrainte(x))^2)
             grad_Lagrangien(x) = grad_fonc(x) + (λk') * grad_contrainte(x) + (μk) * contrainte(x) * grad_contrainte(x) 
