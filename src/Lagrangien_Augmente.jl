@@ -57,11 +57,11 @@ function Lagrangien_Augmente(algo,fonc::Function,contrainte::Function,grad_fonc:
 	if options == []
 		epsilon = 1e-8
 		tol = 1e-5
-		itermax = 1000
+		itermax = 1e8
 		lambda0 = 2
 		mu0 = 100
 		tho = 2
-	else
+	else 
 		epsilon = options[1]
 		tol = options[2]
 		itermax = options[3]
@@ -90,17 +90,30 @@ function Lagrangien_Augmente(algo,fonc::Function,contrainte::Function,grad_fonc:
     flg = 0
     iter = 0
     
+    
     while flag == 10
             Lagrangien(x) = fonc(x) + (λk') * contrainte(x)+ (μk/2) *(norm(contrainte(x))^2)
-            grad_Lagrangien(x) = grad_fonc(x) + (λk') * grad_contrainte(x) + (μk) * contrainte(x) * grad_contrainte(x) 
-            hess_Lagrangien(x) = hess_fonc(x) + (λk') * hess_contrainte(x) + (μk) * grad_contrainte(x) * (grad_contrainte(x)') 
+            grad_Lagrangien(x) = grad_fonc(x) + grad_contrainte(x) * (λk') + grad_contrainte(x) * (μk) * contrainte(x) 
+            hess_Lagrangien(x) = hess_fonc(x) + (λk' + μk * contrainte(x))* hess_contrainte(x) + (μk) * grad_contrainte(x) * (grad_contrainte(x)')
             
-            # Ajouter de la Documentations 
-            xkplus1,f_min,flg,iter = algo(Lagrangien,grad_Lagrangien,hess_Lagrangien,xk,[]) #A revoir les parametres des algo
-
-            niters += iter; 
+            grad_Lagrangien0(x,λ) = grad_fonc(x) + grad_contrainte(x) * (λ') 
         
-            if norm(grad_Lagrangien(xkplus1)) <= ϵk
+            Tol_rel = tol
+            Tol_abs = epsilon
+        
+            # Déterminer le paramètre algo
+            if (algo == "newton")
+                    xkplus1,f_min,flg,iter = Algorithme_De_Newton(Lagrangien,grad_Lagrangien,hess_Lagrangien,xk,[itermax;ϵk;Tol_rel]) 
+            elseif (algo == "gct")
+                    xkplus1,f_min,flg,iter = algo(Lagrangien,grad_Lagrangien,hess_Lagrangien,xk,[itermax;ϵk;Tol_rel]) 
+            elseif (algo == "cauchy")
+                xkplus1,f_min,flg,iter = algo(Lagrangien,grad_Lagrangien,hess_Lagrangien,xk,[itermax;ϵk;Tol_rel]) 
+            else 
+                return "Erreur : Algo non défini"
+            end
+            #niters += iter; 
+
+            if ( norm(grad_Lagrangien0(xkplus1,λk)) <= max(Tol_rel*norm(grad_Lagrangien0(x0,lambda0)),Tol_abs) &&  norm(contrainte(xkplus1)) <= max(Tol_rel*norm(contrainte(x0)),Tol_abs))
                 flag = 0
             elseif itermax <= niters  "test sur le nombre d'itération maximal  flag--> 1 "
                     flag = 1
@@ -113,6 +126,7 @@ function Lagrangien_Augmente(algo,fonc::Function,contrainte::Function,grad_fonc:
                 ϵk = ϵ0/μk
                 ηk = tmp/(μk^α)
             end
+            niters += 1 
             xk = xkplus1
          end  
      return xkplus1,f_min,flag,niters
