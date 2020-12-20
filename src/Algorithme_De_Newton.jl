@@ -53,7 +53,7 @@ function Algorithme_De_Newton(f::Function,gradf::Function,hessf::Function,x0,opt
     iter = 0
     flag = 10
     while flag == 10
-        dk = -(hessf(xk)') * gradf(xk) # a revoir
+        dk = -inv(hessf(xk)) * gradf(xk) 
         xkplus1 = xk + dk 
         iter += 1
         if norm(gradf(xk)) <= max(Tol_rel*norm(gradf(x0)),Tol_abs) "test de Convergence flag--> 0 "

@@ -51,6 +51,7 @@ hess_contrainte(x) = [2 0;0 2]
 output = Lagrangien_Augmente(algo,f,contrainte,gradf,hessf,grad_contrainte,hess_contrainte,x0,options)
 ```
 """
+
 function Lagrangien_Augmente(algo,fonc::Function,contrainte::Function,grad_fonc::Function,
 	hess_fonc::Function,grad_contrainte::Function,hess_contrainte::Function,x0,options)
 
@@ -79,7 +80,7 @@ function Lagrangien_Augmente(algo,fonc::Function,contrainte::Function,grad_fonc:
     β=0.9 
     
     tmp = 0.1258925 # = ^η0
-    η0=  tmp/(mu0^α) 
+    η0=  0.1 # tmp/(mu0^α) 
     ηk = η0
     xk = x0
     flag = 10
@@ -87,7 +88,6 @@ function Lagrangien_Augmente(algo,fonc::Function,contrainte::Function,grad_fonc:
     # definitions des variables
     xkplus1 = xk
     f_min = 0
-    flg = 0
     iter = 0
     
     
@@ -112,15 +112,17 @@ function Lagrangien_Augmente(algo,fonc::Function,contrainte::Function,grad_fonc:
                 return "Erreur : Algo non défini"
             end
             #niters += iter; 
-
+            #println("  * xk = ",xk)
+            #println("  * flg = ",flg)
+            #println("  * xkplus1 = ",xkplus1)
             if ( norm(grad_Lagrangien0(xkplus1,λk)) <= max(Tol_rel*norm(grad_Lagrangien0(x0,lambda0)),Tol_abs) &&  norm(contrainte(xkplus1)) <= max(Tol_rel*norm(contrainte(x0)),Tol_abs))
                 flag = 0
-            elseif itermax <= niters  "test sur le nombre d'itération maximal  flag--> 1 "
-                    flag = 1
             elseif norm(contrainte(xkplus1)) <= ηk
                 λk += μk* contrainte(xkplus1)
                 ϵk = ϵk/μk
                 ηk = ηk/(μk^β)
+            elseif itermax <= niters  "test sur le nombre d'itération maximal  flag--> 1 "
+                    flag = 1
             else 
                 μk = μk*τ
                 ϵk = ϵ0/μk
