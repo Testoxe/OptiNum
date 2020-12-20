@@ -105,9 +105,9 @@ function Lagrangien_Augmente(algo,fonc::Function,contrainte::Function,grad_fonc:
             if (algo == "newton")
                     xkplus1,f_min,flg,iter = Algorithme_De_Newton(Lagrangien,grad_Lagrangien,hess_Lagrangien,xk,[itermax;ϵk;Tol_rel]) 
             elseif (algo == "gct")
-                    xkplus1,f_min,flg,iter = algo(Lagrangien,grad_Lagrangien,hess_Lagrangien,xk,[itermax;ϵk;Tol_rel]) 
+                    xkplus1,f_min,flg,iter = Regions_De_Confiance("gct",Lagrangien,grad_Lagrangien,hess_Lagrangien,xk,[10;0.5;2;0.25;0.75;2;itermax;ϵk;Tol_rel]) 
             elseif (algo == "cauchy")
-                xkplus1,f_min,flg,iter = algo(Lagrangien,grad_Lagrangien,hess_Lagrangien,xk,[itermax;ϵk;Tol_rel]) 
+                xkplus1,f_min,flg,iter = Regions_De_Confiance("cauchy",Lagrangien,grad_Lagrangien,hess_Lagrangien,xk,[10;0.5;2;0.25;0.75;2;itermax;ϵk;Tol_rel]) 
             else 
                 return "Erreur : Algo non défini"
             end
