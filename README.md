@@ -6,7 +6,7 @@
 
 Optinum/src contient le corps (à compléter) des algorithmes d'optimisation vus en cours d'Optimisation Numérique.
 #### Etude et Documentation du Projet :
-   * `mathn7.github.io/Optinum/dev/`
+   * `mathn7.github.io/Optinum/dev/Sujet/`
 #### Fichiers à ne pas modifier : 
    * `src/Optinum.jl`
    * `test/runtests.jl`
