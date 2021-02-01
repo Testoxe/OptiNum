@@ -1,17 +1,18 @@
 # Optinum
 
-| **Documentation** | **Intégration continue** | **Julia** |
-|:-----------------:|:------------------------:|:----------:|
-| [![](https://img.shields.io/badge/docs-dev-blue.svg)](https://mathn7.github.io/Optinum/dev/index) |[![Build Status](https://travis-ci.com/mathn7/Optinum.svg?branch=master)](https://travis-ci.com/mathn7/Optinum)| [![](https://img.shields.io/github/v/release/JuliaLang/julia.svg)](https://docs.julialang.org) |
+| **Documentation** | **Julia** |
+|:-----------------:|:---------:|
+| [![](https://img.shields.io/badge/docs-dev-blue.svg)](https://mathn7.github.io/Optinum/dev/index) | [![](https://img.shields.io/github/v/release/JuliaLang/julia.svg)](https://docs.julialang.org) |
 
-Optinum/src contient le corps (à compléter) des algorithmes d'optimisation vus en cours d'Optimisation Numérique.
-#### Etude et Documentation du Projet :
-   * `mathn7.github.io/Optinum/dev/Sujet/`
-#### Fichiers à ne pas modifier : 
-   * `src/Optinum.jl`
-   * `test/runtests.jl`
-   * `Project.toml`
-   * `Manifest.toml`
-   * `docs/Project.toml`
-   * `docs/Manifest.toml`
-   * `docs/assets/`
+## Numerical methods for minimizing a function  in Julia
+
+### Constrained:
+Implementation of algorithms to find solutions for the problem: ``\min _{x \in \mathbb{R}^{n}} f(x)`` where ``f`` is ``C^{2}`` in ``R^{n}``
+
+1) Newton local algorithm
+2) Trust regions method
+
+### Unconstrained:
+The problem now becomes: ``\min _{x \in \mathbb{R}^{n}} f(x)`` under the constraint ``x \in C`` in which C is a non empty subset of ``\mathbb{R}^{n}``
+
+3) Augmented Lagragien method
